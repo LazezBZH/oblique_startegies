@@ -126,7 +126,7 @@ let stategies = [
 let randomBtn = document.getElementById("random");
 let root = document.getElementById("root");
 let textIndex = "";
-let randomNums = [];
+let randomNums = JSON.parse(localStorage.getItem("done")) || [];
 
 randomBtn.addEventListener("click", getOne);
 function init() {
@@ -136,15 +136,17 @@ setTimeout(init, 500);
 
 function getOne() {
   const randomIndex = Math.floor(Math.random() * stategies.length);
-  root.innerHTML = `<img src="/assets/loader.svg" alt="loader"></img>`;
+  root.innerHTML = `<img src="./assets/loader.svg" alt="loader"></img>`;
   if (randomNums.length == stategies.length) {
     randomNums = [];
+    localStorage.setItem("done", randomNums);
   }
   if (randomNums.includes(randomIndex)) {
     getOne();
   } else {
     randomNums.push(randomIndex);
-
+    let used = JSON.stringify(randomNums);
+    localStorage.setItem("done", used);
     textIndex = randomIndex;
 
     setTimeout(writeText, 300);
