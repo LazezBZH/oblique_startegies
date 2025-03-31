@@ -1,0 +1,78 @@
+html {
+  background-color: black;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95dvh;
+  justify-content: space-between;
+}
+#root img {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display: inline-block;
+}
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+button {
+  max-width: 250px;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 5dvh;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#root {
+  max-width: min(90dvw, 900px);
+  display: flex;
+  align-items: center;
+  font-size: 4rem;
+  text-align: center;
+
+  flex-grow: 0.95;
+  padding-top: 15dvh;
+}
+footer {
+  width: 100dvw;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 0;
+  padding: 2dvh 0;
+}
+header {
+  color: black;
+  background-color: white;
+  width: 100dvw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+@media screen and (max-width: 500px) {
+  #root {
+    font-size: 3rem;
+  }
+  header {
+    font-size: 1.5rem;
+  }
+}
