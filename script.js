@@ -155,3 +155,17 @@ function getOne() {
 function writeText() {
   root.innerHTML = stategies[textIndex];
 }
+
+const show = document.querySelector(".show");
+const hide = document.querySelector(".hide");
+const body = document.querySelector(".body");
+
+show.addEventListener("click", showExplain);
+hide.addEventListener("click", hideExplain);
+
+function showExplain() {
+  body.style.display = "flex";
+}
+function hideExplain() {
+  body.style.display = "none";
+}

@@ -10,8 +10,6 @@ self.addEventListener("install", (event) => {
         "./index.html",
         "./script.js",
         "./style.css",
-        "./explications.html",
-        "./explications.css",
         "./assets",
         "./assets/loader.svg",
         "./assets/logo.webp",
