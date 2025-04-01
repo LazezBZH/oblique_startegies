@@ -155,7 +155,9 @@ button.show {
   padding: 2dvh 0;
   font-size: 2rem;
 }
-
+.footer .hide {
+  display: none;
+}
 .header {
   color: black;
   background-color: white;
@@ -205,5 +207,11 @@ button.show {
   .main {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .footer .hide {
+    display: flex;
+  }
+  .footer button {
+    font-size: 1rem;
   }
 }

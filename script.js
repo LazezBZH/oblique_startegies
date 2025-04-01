@@ -157,11 +157,17 @@ function writeText() {
 }
 
 const show = document.querySelector(".show");
-const hide = document.querySelector(".hide");
+const hide = document.querySelectorAll(".hide");
 const body = document.querySelector(".body");
 
 show.addEventListener("click", showExplain);
-hide.addEventListener("click", hideExplain);
+
+// hide.forEach(btn).addEventListener("click", hideExplain);
+hide.forEach(function (btn) {
+  btn.addEventListener("click", hideExplain);
+});
+
+// hide.addEventListener("click", hideExplain);
 
 function showExplain() {
   body.style.display = "flex";
