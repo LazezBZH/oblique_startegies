@@ -124,20 +124,43 @@ let stategies = [
   "Vers l'insignifiant ",
 ];
 
+// to keep the same sentence when refresh in the same day
+let date = new Date();
+let day = date.getDate();
+let month = date.getMonth();
+let year = date.getFullYear();
+let dateNow = [day, month, year];
+dateNow = dateNow.join("/");
+
 let randomBtn = document.getElementById("random");
 let root = document.getElementById("root");
 let textIndex = "";
 let randomNums = JSON.parse(localStorage.getItem("done")) || [];
 
-randomBtn.addEventListener("click", getOne);
+randomBtn.addEventListener("click", getTheOne);
 function init() {
-  getOne();
+  if (localStorage.getItem("date") && localStorage.getItem("date") != dateNow) {
+    // new day
+    localStorage.setItem("date", dateNow);
+    getTheOne();
+  } else if (!localStorage.getItem("date")) {
+    // first co
+    getTheOne();
+    localStorage.setItem("date", dateNow);
+  } else {
+    // same dy
+    let last = randomNums[randomNums.length - 1];
+    root.innerHTML = stategies[last];
+  }
 }
-setTimeout(init, 500);
+init();
 
+function getTheOne() {
+  root.innerHTML = `<img src="./assets/loader.svg" alt="loader"></img>`;
+  setTimeout(getOne, 300);
+}
 function getOne() {
   const randomIndex = Math.floor(Math.random() * stategies.length);
-  root.innerHTML = `<img src="./assets/loader.svg" alt="loader"></img>`;
   if (randomNums.length == stategies.length) {
     randomNums = [];
     localStorage.setItem("done", randomNums);
@@ -149,26 +172,23 @@ function getOne() {
     let used = JSON.stringify(randomNums);
     localStorage.setItem("done", used);
     textIndex = randomIndex;
-
-    setTimeout(writeText, 300);
+    writeText();
   }
 }
 function writeText() {
   root.innerHTML = stategies[textIndex];
 }
 
+// explanations
 const show = document.querySelector(".show");
 const hide = document.querySelectorAll(".hide");
 const body = document.querySelector(".body");
 
 show.addEventListener("click", showExplain);
 
-// hide.forEach(btn).addEventListener("click", hideExplain);
 hide.forEach(function (btn) {
   btn.addEventListener("click", hideExplain);
 });
-
-// hide.addEventListener("click", hideExplain);
 
 function showExplain() {
   body.style.display = "flex";
